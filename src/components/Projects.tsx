@@ -1,9 +1,9 @@
 
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Bot, BarChart3, CpuIcon } from 'lucide-react';
-import fitplay from 'public/fitplay.png';
-import waterbot from 'public/waterbot.png';
-import covid from 'public/covid.png';
+import fitplay from 'public/images/fitplay.png';
+import waterbot from 'public/images/waterbot.png';
+import covid from 'public/images/covid.png';
 export function Projects() {
   const projects = [
     {

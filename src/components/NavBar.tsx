@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Menu, X, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import profileImage from 'public/profile.jpg';
+import profileImage from 'public/images/profile.jpg';
 
 const links = [
   { href: 'home', label: 'Home' },
