@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Menu, X, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import profileImage from '../assets/monic.jpeg';
+import profileImage from 'public/profile.jpg';
 
 const links = [
   { href: 'home', label: 'Home' },

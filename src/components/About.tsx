@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Code, FileSearch, Focus } from 'lucide-react';
-import profileImage from '../assets/monic.jpeg';
+import profileImage from 'public/profile.jpg';
 
 export function About() {
   return (
