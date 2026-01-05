@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ChefHat, Bot, BarChart3, Code2, CpuIcon } from 'lucide-react';
+import { ExternalLink, Github, Bot, BarChart3, CpuIcon } from 'lucide-react';
 import fitplay from '../assets/fitplay.png';
 import waterbot from '../assets/waterbot.png';
 import covid from '../assets/covid.png';

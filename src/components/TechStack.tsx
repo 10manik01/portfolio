@@ -110,7 +110,7 @@ export function TechStack() {
               
               {/* Simplified Grid of Pills */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {category.skills.map((skill, index) => (
+                {category.skills.map((skill) => (
                   <motion.div
                     key={skill.name}
                     whileHover={{ scale: 1.02, backgroundColor: "#f9fafb" }}

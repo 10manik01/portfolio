@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
-import { GraduationCap, BookOpen, Calendar, School, ExternalLink } from 'lucide-react';
+import { GraduationCap, BookOpen, School, ExternalLink } from 'lucide-react';
 
 export function Education() {
   const education = [
