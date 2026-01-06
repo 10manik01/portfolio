@@ -154,7 +154,9 @@ export function NavBar() {
                 <a
                   href="https://github.com/10manik01"
                   target="_blank"
-                  className="mt-2 flex items-center justify-center gap-2 px-6 py-4 bg-gray-900 text-white rounded-2xl font-bold"
+                  className="mt-2 flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 text-white rounded-2xl font-bold
+                             shadow-md shadow-blue-200/50 transition-all duration-300 ease-out
+                             active:scale-95"
                 >
                   <Github size={20} />
                   GitHub

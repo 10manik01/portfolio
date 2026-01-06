@@ -40,9 +40,9 @@ export function About() {
               </div>
 
               {/* Experience Badge */}
-              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg border border-gray-50 hidden md:block">
-                <p className="text-blue-600 font-bold tracking-[0.15em] text-sm leading-none">Elex, Comm and Info Engineer</p>
-                <p className="text-gray-400 text-sm tracking-[0.15em] font-light uppercase tracking-wider">NEC Registered</p>
+              <div className="absolute -bottom-6 -right-6 bg-white p-3 md:p-4 rounded-xl shadow-lg border border-gray-50 block">
+                <p className="text-blue-600 font-bold tracking-[0.15em] text-xs md:text-sm leading-none">Elex, Comm and Info Engineer</p>
+                <p className="text-gray-400 text-xs md:text-sm tracking-[0.15em] font-light uppercase tracking-wider">NEC Registered</p>
               </div>
             </div>
           </motion.div>
