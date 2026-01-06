@@ -95,7 +95,7 @@ export function Projects() {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold tracking-[0.08em] text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold tracking-[0.08em] text-gray-900 mb-2 group-hover:text-blue-600 transition-colors break-words">
                   {project.title}
                 </h3>
 

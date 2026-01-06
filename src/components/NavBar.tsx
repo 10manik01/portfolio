@@ -143,8 +143,8 @@ export function NavBar() {
                     key={link.href}
                     onClick={() => scrollToSection(link.href)}
                     className={`px-6 py-4 rounded-2xl text-base font-bold transition-all text-left ${active === link.href
-                        ? 'text-blue-600 bg-blue-50'
-                        : 'text-gray-500 hover:bg-gray-50'
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-500 hover:bg-gray-50'
                       }`}
                   >
                     {link.label}
@@ -152,7 +152,7 @@ export function NavBar() {
                 ))}
                 {/* Mobile GitHub Link */}
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/10manik01"
                   target="_blank"
                   className="mt-2 flex items-center justify-center gap-2 px-6 py-4 bg-gray-900 text-white rounded-2xl font-bold"
                 >

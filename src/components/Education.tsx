@@ -33,7 +33,7 @@ export function Education() {
   return (
     <section id="education" className="relative py-16 md:py-24 bg-white overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 md:px-6">
-        
+
         {/* Header Section - Kept exactly as requested */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -63,9 +63,8 @@ export function Education() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`relative flex flex-col md:flex-row items-start md:items-center ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
+                className={`relative flex flex-col md:flex-row items-start md:items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                  }`}
               >
                 {/* Timeline Dot/Icon */}
                 <div className="absolute left-4 md:left-1/2 w-10 h-10 -translate-x-1/2 flex items-center justify-center rounded-full bg-white border-2 border-yellow-500 z-10 shadow-sm">
@@ -73,30 +72,28 @@ export function Education() {
                 </div>
 
                 {/* Content Card */}
-                <div className={`w-full md:w-[45%] pl-12 md:pl-0 ${
-                  index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:pl-12'
-                }`}>
+                <div className={`w-full md:w-[45%] pl-12 md:pl-0 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:pl-12'
+                  }`}>
                   <div className="p-6 bg-gray-50/50 border border-gray-100 rounded-3xl hover:shadow-md transition-shadow duration-300">
                     <span className="inline-block px-3 py-1 rounded-full bg-yellow-50 text-yellow-700 text-xs font-bold mb-3">
                       {item.period}
                     </span>
-                    
+
                     <h3 className="text-xl font-bold tracking-[0.15em] text-gray-900 leading-tight mb-2">
                       {item.degree}
                     </h3>
-                    
-                    <a 
-                      href={item.link} 
-                      target="_blank" 
+
+                    <a
+                      href={item.link}
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-1 text-blue-600 hover:text-blue-500 font-medium text-sm mb-3 transition-colors ${
-                        index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                      }`}
+                      className={`inline-flex items-center gap-1 text-blue-600 hover:text-blue-500 font-medium text-sm mb-3 transition-colors break-words ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                        }`}
                     >
                       {item.school}
-                      <ExternalLink size={12} />
+                      <ExternalLink size={12} className="flex-shrink-0" />
                     </a>
-                    
+
                     <p className="text-gray-600 tracking-[0.15em] text-sm leading-relaxed">
                       {item.details}
                     </p>
