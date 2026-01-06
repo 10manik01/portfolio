@@ -1,9 +1,9 @@
 
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Bot, BarChart3, CpuIcon } from 'lucide-react';
-import fitplay from 'public/images/fitplay.png';
-import waterbot from 'public/images/waterbot.png';
-import covid from 'public/images/covid.png';
+const fitplay = import.meta.env.BASE_URL + 'images/fitplay.png';
+const waterbot = import.meta.env.BASE_URL + 'images/waterbot.png';
+const covid = import.meta.env.BASE_URL + 'images/covid.png';
 export function Projects() {
   const projects = [
     {
@@ -12,7 +12,7 @@ export function Projects() {
                     • Used Arduino UNO as microcontroller with 3 MPU6050 sensors integrated on a Body Suit for real time data acquisition`,
       image: fitplay,
       icon: CpuIcon,
-      tech: ["Python", "Pandas", "NumPy", "Scikit-learn","TensorFlow", "Arduino", "Unity"],
+      tech: ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow", "Arduino", "Unity"],
       link: "https://youtube.com/shorts/q4Tb-CpperY?si=oYgnfJpWkAqCBrMf",
       github: "https://github.com/10manik01/ML_Project---MPU6050_Sensor_based_Human_activity_recognition_using_machine_learning",
       gradient: "from-orange-400 to-red-500"
@@ -72,8 +72,8 @@ export function Projects() {
             >
               {/* Project Image Box */}
               <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -98,7 +98,7 @@ export function Projects() {
                 <h3 className="text-xl font-bold tracking-[0.08em] text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                   {project.title}
                 </h3>
-                
+
                 <div className="text-gray-600 tracking-[0.15em] text-sm leading-relaxed mb-6">
                   {project.description.split('\n').map((line, i) => (
                     <p key={i} className={i === 0 ? '' : 'mt-2'}>
@@ -106,7 +106,7 @@ export function Projects() {
                     </p>
                   ))}
                 </div>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span

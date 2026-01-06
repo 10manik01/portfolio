@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Menu, X, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import profileImage from 'public/images/profile.jpg';
+// import profileImage from 'public/images/profile.jpg';
+const profileImage = import.meta.env.BASE_URL + 'images/monic.jpeg';
 
 const links = [
   { href: 'home', label: 'Home' },
@@ -28,7 +29,7 @@ export function NavBar() {
 
       const scrollPosition = window.scrollY + 120;
       let currentSection = 'home';
-      
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section.element && scrollPosition >= section.element.offsetTop) {
@@ -67,14 +68,14 @@ export function NavBar() {
           pointer-events-auto
           relative flex items-center justify-between
           transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]
-          ${isScrolled 
-            ? 'px-4 py-2 bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.05)] w-auto' 
+          ${isScrolled
+            ? 'px-4 py-2 bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.05)] w-auto'
             : 'px-6 py-4 bg-transparent w-full max-w-6xl'
           }
         `}
       >
         {/* LEFT: Logo / Profile */}
-        <button 
+        <button
           onClick={() => scrollToSection('home')}
           className="relative z-10 flex-shrink-0"
         >
@@ -89,9 +90,8 @@ export function NavBar() {
             <button
               key={link.href}
               onClick={() => scrollToSection(link.href)}
-              className={`relative px-4 py-2 text-sm font-bold transition-colors duration-300 ${
-                active === link.href ? 'text-blue-600' : 'text-gray-500 hover:text-gray-900'
-              }`}
+              className={`relative px-4 py-2 text-sm font-bold transition-colors duration-300 ${active === link.href ? 'text-blue-600' : 'text-gray-500 hover:text-gray-900'
+                }`}
             >
               <span className="relative z-10">{link.label}</span>
               {active === link.href && (
@@ -107,20 +107,20 @@ export function NavBar() {
 
         {/* RIGHT: GitHub Link */}
         <div className="flex items-center gap-4">
-         <a 
-  href="https://github.com/10manik01" 
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hidden md:flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full 
+          <a
+            href="https://github.com/10manik01"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full 
              shadow-md shadow-blue-200/50 transition-all duration-300 ease-out
              hover:-translate-y-1 hover:scale-105 hover:shadow-xl hover:shadow-blue-300/60 active:scale-95"
->
-  <Github size={18} />
-  <span className="text-xs font-bold uppercase tracking-wider">GitHub</span>
-</a>
+          >
+            <Github size={18} />
+            <span className="text-xs font-bold uppercase tracking-wider">GitHub</span>
+          </a>
 
           {/* Mobile Menu Toggle */}
-          <button 
+          <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
@@ -142,17 +142,16 @@ export function NavBar() {
                   <button
                     key={link.href}
                     onClick={() => scrollToSection(link.href)}
-                    className={`px-6 py-4 rounded-2xl text-base font-bold transition-all text-left ${
-                      active === link.href
+                    className={`px-6 py-4 rounded-2xl text-base font-bold transition-all text-left ${active === link.href
                         ? 'text-blue-600 bg-blue-50'
                         : 'text-gray-500 hover:bg-gray-50'
-                    }`}
+                      }`}
                   >
                     {link.label}
                   </button>
                 ))}
                 {/* Mobile GitHub Link */}
-                <a 
+                <a
                   href="https://github.com/yourusername"
                   target="_blank"
                   className="mt-2 flex items-center justify-center gap-2 px-6 py-4 bg-gray-900 text-white rounded-2xl font-bold"

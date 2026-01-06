@@ -1,26 +1,26 @@
 import { motion } from 'framer-motion';
-import pythonLogo from 'public/images/python-logo.png';
-import Cpp from 'public/images/cpp-logo.png';
-import SQL from 'public/images/SQL.png';
-import Docker from 'public/images/Docker.png';
-import Git from 'public/images/Git.png';
-import keras from 'public/images/keras.png';
-import C from 'public/images/C-logo.png';
-import Matplot from 'public/images/Matplotlib.png';
-import NumPy from 'public/images/NumPy.png';
-import OpenCV from 'public/images/OpenCV.png';
-import Pandas from 'public/images/Pandas.png';
-import Raspberry from 'public/images/Raspberry Pi.png';
-import scikit from 'public/images/Scikit-learn.png';
-import tensor from 'public/images/TensorFlow.png';
-import vhdl from 'public/images/VHDL.png';
-import Arduino from 'public/images/Arduino.png';
-import Postgres from 'public/images/PostgreSQL.png';
-import MySQL from 'public/images/MySQL.png';
-import Spark from 'public/images/Apache Spark.png';
-import Airflow from 'public/images/Apache Airflow.png';
-import n8n from 'public/images/n8n.png';
-import Linux from 'public/images/Linux.png';
+const pythonLogo = import.meta.env.BASE_URL + 'images/python.png';
+const Cpp = import.meta.env.BASE_URL + 'images/c-.png';
+const SQL = import.meta.env.BASE_URL + 'images/database.png';
+const Docker = import.meta.env.BASE_URL + 'images/Docker.png';
+const Git = import.meta.env.BASE_URL + 'images/Git.png';
+const keras = import.meta.env.BASE_URL + 'images/Keras.png';
+const C = import.meta.env.BASE_URL + 'images/letter-c.png';
+const Matplot = import.meta.env.BASE_URL + 'images/Matplotlib.png';
+const NumPy = import.meta.env.BASE_URL + 'images/NumPy.png';
+const OpenCV = import.meta.env.BASE_URL + 'images/OpenCV.png';
+const Pandas = import.meta.env.BASE_URL + 'images/Pandas.png';
+const Raspberry = import.meta.env.BASE_URL + 'images/Raspberry Pi.png';
+const scikit = import.meta.env.BASE_URL + 'images/scikit-learn.png';
+const tensor = import.meta.env.BASE_URL + 'images/TensorFlow.png';
+const vhdl = import.meta.env.BASE_URL + 'images/chip.png';
+const Arduino = import.meta.env.BASE_URL + 'images/Arduino.png';
+const Postgres = import.meta.env.BASE_URL + 'images/PostgresSQL.png';
+const MySQL = import.meta.env.BASE_URL + 'images/MySQL.png';
+const Spark = import.meta.env.BASE_URL + 'images/Apache Spark.png';
+const Airflow = import.meta.env.BASE_URL + 'images/Apache Airflow.png';
+const n8n = import.meta.env.BASE_URL + 'images/n8n.png';
+const Linux = import.meta.env.BASE_URL + 'images/Linux.png';
 
 export function TechStack() {
   type Skill = { name: string; logo?: string; icon?: string };
@@ -107,7 +107,7 @@ export function TechStack() {
                 </h3>
                 <div className="h-[1px] w-full bg-gray-100" />
               </div>
-              
+
               {/* Simplified Grid of Pills */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {category.skills.map((skill) => (
@@ -118,10 +118,10 @@ export function TechStack() {
                   >
                     <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
                       {skill.logo ? (
-                        <img 
-                          src={skill.logo} 
-                          alt={skill.name} 
-                          className="w-full h-full object-contain" 
+                        <img
+                          src={skill.logo}
+                          alt={skill.name}
+                          className="w-full h-full object-contain"
                         />
                       ) : (
                         <span className="text-xl">{skill.icon}</span>
