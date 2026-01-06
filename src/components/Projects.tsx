@@ -1,9 +1,10 @@
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Bot, BarChart3, CpuIcon } from 'lucide-react';
+import { ExternalLink, Github, Bot, BarChart3, CpuIcon, DatabaseIcon } from 'lucide-react';
 const fitplay = import.meta.env.BASE_URL + 'images/fitplay.png';
 const waterbot = import.meta.env.BASE_URL + 'images/waterbot.png';
 const covid = import.meta.env.BASE_URL + 'images/covid.png';
+const student = import.meta.env.BASE_URL + 'images/stdmgmt.png';
 export function Projects() {
   const projects = [
     {
@@ -37,6 +38,16 @@ export function Projects() {
       link: "https://github.com/10manik01/Python_Data_Analysis_Project---Covid19_data_analysis",
       github: "https://github.com/10manik01/Python_Data_Analysis_Project---Covid19_data_analysis",
       gradient: "from-green-400 to-blue-500"
+    },
+    {
+      title: "Database Project - Student Management System",
+      description: `• Built a CRUD web app for managing student records using Flask and SQLAlchemy with a MySQL backend`,
+      image: student,
+      icon: DatabaseIcon,
+      tech: ["Python", "Flask", "SQLAlchemy", "MySQL", "HTML", "CSS"],
+      link: "https://youtu.be/rut2C1qXSGk",
+      github: "https://github.com/10manik01/Database_Project---student_record_management_flaskapp",
+      gradient: "from-orange-400 to-red-500"
     }
   ];
 
