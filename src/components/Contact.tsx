@@ -9,7 +9,8 @@ export function Contact() {
     { icon: Github, label: "GitHub", info: "Code & Projects", href: "https://github.com/10manik01", color: "text-gray-900", bg: "bg-gray-100" },
     { icon: Youtube, label: "YouTube", info: "Content Creation", href: "https://www.youtube.com/@MindMineNepal", color: "text-red-600", bg: "bg-red-50" },
     { icon: Phone, label: "Phone", info: "+977-9811233214", href: "tel:+9779811233214", color: "text-green-500", bg: "bg-green-50" },
-    { icon: "🤗", label: "HuggingFace", info: "AI Models", href: "https://huggingface.co/manik01", color: "text-yellow-600", bg: "bg-yellow-50" }
+    { icon: "🤗", label: "HuggingFace", info: "AI Models", href: "https://huggingface.co/manik01", color: "text-yellow-600", bg: "bg-yellow-50" },
+    { icon: "✍️", label: "My Blog", info: "Blog Posts", href: "https://maniksyangtan.com.np", color: "text-gray-600", bg: "bg-gray-50" }
   ];
 
   return (
@@ -53,7 +54,7 @@ export function Contact() {
                   </div>
                   <ExternalLink size={16} className="text-gray-300 group-hover:text-blue-500 transition-colors" />
                 </div>
-                
+
                 <div>
                   <h3 className="text-gray-900 tracking-[0.2em] font-bold text-lg">{social.label}</h3>
                   <p className="text-gray-400 tracking-[0.15em] text-xs font-medium truncate group-hover:text-gray-600 transition-colors">
@@ -66,13 +67,13 @@ export function Contact() {
         </div>
 
         {/* Concise Footer */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="mt-20 text-center border-t border-gray-50 pt-12"
         >
           <h3 className="text-2xl font-black tracking-normal mb-2">
-            <span className="bg-gradient-to-r from-gray-900 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
+            <span className="text-black">
               MANIK SYANGTAN
             </span>
           </h3>

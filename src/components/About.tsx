@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Code, FileSearch, Focus } from 'lucide-react';
-const profileImage = import.meta.env.BASE_URL + 'images/monic.jpeg';
+const profileImage = import.meta.env.BASE_URL + 'images/fw.png';
 
 export function About() {
   return (

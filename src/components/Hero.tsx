@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { Brain, Cpu, Zap, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-6 relative bg-white overflow-hidden">
       {/* Modern Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.03]" 
-           style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+      <div className="absolute inset-0 z-0 opacity-[0.03]"
+        style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }}
       />
 
       <div className="text-center max-w-4xl z-10">
@@ -16,20 +16,20 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-{/* Main Name Heading */}
-<h1 className="text-6xl md:text-8xl font-black mb-4">
-  <span className="inline-block tracking-normal bg-gradient-to-r from-gray-900 via-blue-600 to-cyan-500 bg-clip-text text-transparent transition-all duration-500 cursor-default">
-    MANIK SYANGTAN
-  </span>
-</h1>
-          <motion.div
+          {/* Main Name Heading */}
+          <h1 className="text-6xl md:text-8xl font-black mb-4">
+            <span className="text-black">
+              MANIK SYANGTAN
+            </span>
+          </h1>
+          {/* <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-2xl md:text-4xl font-light text-gray-500 mb-6 tracking-tight"
           >
             Welcome to My Portfolio
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* The Quote */}
@@ -43,36 +43,36 @@ export function Hero() {
         </motion.p>
 
         {/* Animated Tech Icons */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="flex justify-center space-x-12 mb-16"
-        >
-          {[
-            { Icon: Brain, color: "text-blue-500" },
-            { Icon: Cpu, color: "text-purple-500" },
-            { Icon: Zap, color: "text-yellow-500" }
-          ].map(({ Icon, color }, index) => (
-            <motion.div
-              key={index}
-              animate={{ 
-                y: [0, -10, 0],
-              }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: index * 0.4
-              }}
-              className="flex flex-col items-center gap-2"
-            >
-              <div className={`p-4 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm ${color}`}>
-                <Icon size={32} />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="flex justify-center space-x-12 mb-16"
+          >
+            {[
+              { Icon: Brain, color: "text-blue-500" },
+              { Icon: Cpu, color: "text-purple-500" },
+              { Icon: Zap, color: "text-yellow-500" }
+            ].map(({ Icon, color }, index) => (
+              <motion.div
+                key={index}
+                animate={{
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.4
+                }}
+                className="flex flex-col items-center gap-2"
+              >
+                <div className={`p-4 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm ${color}`}>
+                  <Icon size={32} />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div> */}
 
         {/* Credentials */}
         <motion.div

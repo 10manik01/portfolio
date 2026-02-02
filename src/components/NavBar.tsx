@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Menu, X, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 // import profileImage from 'public/images/profile.jpg';
-const profileImage = import.meta.env.BASE_URL + 'images/monic.jpeg';
+const profileImage = import.meta.env.BASE_URL + 'images/fw.png';
 
 const links = [
   { href: 'home', label: 'Home' },
