@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Manik Syangtan">
+<meta name="dcterms.date" content="2026-01-22">
+
+<title>Data Literacy – Manik Syangtan | Elex, Comm and Info Engineer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-980b7731fb1d77f0b19a7f8959812838.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-3c87bd97f2d3ed8302ed67633272be33.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-980b7731fb1d77f0b19a7f8959812838.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+  (function () {
+    const portfolioThemeKey = "theme-preference";
+    const quartoThemeKey = "quarto-color-scheme";
+
+    function isTheme(value) {
+      return value === "light" || value === "dark";
+    }
+
+    function fromQuartoTheme(value) {
+      if (value === "alternate") return "dark";
+      if (value === "default") return "light";
+      return null;
+    }
+
+    function toQuartoTheme(value) {
+      return value === "dark" ? "alternate" : "default";
+    }
+
+    function readTheme() {
+      const portfolioTheme = window.localStorage.getItem(portfolioThemeKey);
+      if (isTheme(portfolioTheme)) return portfolioTheme;
+
+      return fromQuartoTheme(window.localStorage.getItem(quartoThemeKey));
+    }
+
+    function writeTheme(theme) {
+      if (!isTheme(theme)) return;
+
+      window.localStorage.setItem(portfolioThemeKey, theme);
+      window.localStorage.setItem(quartoThemeKey, toQuartoTheme(theme));
+    }
+
+    function currentTheme() {
+      return document.body.classList.contains("quarto-dark") ? "dark" : "light";
+    }
+
+    function normalizePathname(pathname) {
+      if (!pathname) return "/";
+      return pathname.replace(/\/index\.html$/, "/");
+    }
+
+    function normalizeUrl(url) {
+      const nextUrl = new URL(url, window.location.href);
+      nextUrl.pathname = normalizePathname(nextUrl.pathname);
+      return nextUrl;
+    }
+
+    function portfolioHomePath() {
+      const currentUrl = normalizeUrl(window.location.href);
+      const blogSegment = "/blog/";
+      const blogIndex = currentUrl.pathname.indexOf(blogSegment);
+
+      if (blogIndex === -1) {
+        return null;
+      }
+
+      return `${currentUrl.pathname.slice(0, blogIndex + 1)}#home`;
+    }
+
+    function syncPortfolioHomeButton() {
+      const homeLink = document.querySelector('#quarto-header .nav-link[href$="#home"]');
+      const targetPath = portfolioHomePath();
+
+      if (!homeLink || !targetPath) return;
+
+      homeLink.href = targetPath;
+    }
+
+    function syncHomeLinkBehavior() {
+      const brandLink = document.querySelector("#quarto-header .navbar-brand");
+      if (!brandLink) return;
+
+      const currentUrl = normalizeUrl(window.location.href);
+      const targetUrl = normalizeUrl(brandLink.href);
+
+      brandLink.href = `${targetUrl.pathname}${targetUrl.search}${targetUrl.hash}`;
+      brandLink.onclick = function (event) {
+        const normalizedCurrent = normalizeUrl(window.location.href);
+        const normalizedTarget = normalizeUrl(brandLink.href);
+
+        if (
+          normalizedCurrent.origin === normalizedTarget.origin &&
+          normalizedCurrent.pathname === normalizedTarget.pathname &&
+          normalizedCurrent.search === normalizedTarget.search &&
+          normalizedCurrent.hash === normalizedTarget.hash
+        ) {
+          event.preventDefault();
+        }
+      };
+
+      if (
+        currentUrl.pathname !== window.location.pathname &&
+        normalizePathname(window.location.pathname) === currentUrl.pathname
+      ) {
+        window.history.replaceState(
+          window.history.state,
+          "",
+          `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`,
+        );
+      }
+    }
+
+    function wrapQuartoToggle() {
+      if (
+        typeof window.quartoToggleColorScheme !== "function" ||
+        window.__themeSyncWrapped
+      ) {
+        return;
+      }
+
+      const originalToggle = window.quartoToggleColorScheme;
+
+      window.quartoToggleColorScheme = function () {
+        originalToggle();
+        writeTheme(currentTheme());
+      };
+
+      window.__themeSyncWrapped = true;
+    }
+
+    function applyTheme(theme) {
+      if (!isTheme(theme) || typeof window.quartoToggleColorScheme !== "function") {
+        return;
+      }
+
+      writeTheme(theme);
+
+      if (theme !== currentTheme()) {
+        window.quartoToggleColorScheme();
+      }
+    }
+
+    const initialTheme = readTheme();
+    if (initialTheme) {
+      writeTheme(initialTheme);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      wrapQuartoToggle();
+      syncPortfolioHomeButton();
+      syncHomeLinkBehavior();
+
+      const theme = readTheme();
+      if (theme) {
+        applyTheme(theme);
+      } else {
+        writeTheme(currentTheme());
+      }
+    });
+
+    window.addEventListener("storage", function (event) {
+      if (event.key !== portfolioThemeKey && event.key !== quartoThemeKey) {
+        return;
+      }
+
+      wrapQuartoToggle();
+      applyTheme(readTheme());
+    });
+  })();
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Manik Syangtan | Elex, Comm and Info Engineer</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../portfolio/#home"> <i class="bi bi-house-door-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/10manik01"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Literacy</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Data Engineering</div>
+                <div class="quarto-category">Data Analysis</div>
+                <div class="quarto-category">Data Science</div>
+                <div class="quarto-category">Machine Learning</div>
+                <div class="quarto-category">Artificial Intelligence</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Manik Syangtan </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 22, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+
+<p><img src="cover.png" class="img-fluid"></p>
+<section id="data-governance" class="level2">
+<h2 class="anchored" data-anchor-id="data-governance">1. Data Governance</h2>
+<p>A good data engineer knows that data is not just a collection of items, but it is a critical asset that should be governed with proper policies and procedures. The <strong>Data Governance</strong> team plays a crucial role in ensuring data quality, consistency, security, and compliance. Data governance is a comprehensive approach that comprises the principles, practices and tools to manage an organization’s data assets throughout their lifecycle. By aligning data-related requirements with business strategy, data governance provides superior data management, quality, visibility, security and compliance capabilities across the organization. Implementing an effective data governance strategy allows companies to make data easily available for data-driven decision-making while safeguarding their data from unauthorized access, and ensuring compliance with regulatory requirements.<a href="#references">1</a> You can read more about data governance <a href="https://www.databricks.com/discover/data-governance">here</a>.</p>
+</section>
+<section id="data-formats" class="level2">
+<h2 class="anchored" data-anchor-id="data-formats">2. Data formats</h2>
+<p>Data formats define how data is structured and encoded, while data serialization is the process of converting in-memory data into those formats for storage or transmission. Serialization depends on data formats. Serialization is to converting in-memory objects / data structures into a sequence of bytes so they can be:Sent over a network (APIs, messaging);Saved to disk (files, databases);Shared between systems And later deserialized back into usable objects.</p>
+<section id="row-major-versus-column-major-format" class="level4">
+<h4 class="anchored" data-anchor-id="row-major-versus-column-major-format">Row-Major Versus Column-Major Format</h4>
+<p>CSV (Comma-separated values) is row-major, which means consecutive elements in a row are stored next to each other in memory. Parquet is column-major, which means consecutive elements in a column are stored next to each other. Row-major formats are better when you have to do a lot of writes, whereas column-major ones are better when you have to do a lot of column-based reads.<a href="#references">2</a></p>
+</section>
+<section id="text-versus-binary-format" class="level4">
+<h4 class="anchored" data-anchor-id="text-versus-binary-format">Text Versus Binary Format</h4>
+<p>CSV and JSON are text files, whereas Parquet files are binary files. Text files are files that are in plain text, which means they are human-readable. Binary files are nontext files and contains onlys 0s and 1s. Binary Files are more compact.<a href="#references">2</a></p>
+<p>AWS recommends using the Parquet format because the Parquet format is up to 2x faster to unload and consumes up to 6x less storage in Amazon s3, compared to text formats.<a href="#references">2</a></p>
+</section>
+</section>
+<section id="how-data-team-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-data-team-works">3. How Data Team Works</h2>
+<p>Data originates from a big company’s systems such as: Databases (Sales, Customers, Products), APIs, Applications, Logs and external tools. These sources continuously generate raw data which are automatically ingested into a central data system designed by the <strong>Data Architect</strong> and built by <strong>Data Engineers</strong>. <strong>Data Architect</strong> can design many type of architecture for data flow however the most common architecture is <strong>Medallion Architecture</strong>:</p>
+<ul>
+<li><strong>Bronze</strong>: Where raw data is first ingested from sources like APIs and Sales databases.</li>
+<li><strong>Silver</strong>: Where data is cleaned and filtered.</li>
+<li><strong>Gold</strong>: Where data is modeled and optimized for business use.</li>
+</ul>
+<p>Once the blueprint exists, the <strong>Data Engineer</strong> steps in to build the actual machinery.</p>
+<ul>
+<li><strong>Automated Pipelines</strong>: Engineers build the “pipelines”—automated systems that move data from various sources (Databases, Apps, APIs) into the data system.</li>
+<li><strong>Maintenance</strong>: They ensure these pipelines run reliably, often updating daily so that the data remains fresh for the rest of the team.</li>
+</ul>
+<p>With the “Gold” layer of data ready, the <strong>Data Analyst</strong> acts as the primary bridge to the business stakeholders. Data Analysts run SQL queries and one-time analyses to understand what happened and why. When a report is needed every single day, it becomes too burdensome for an analyst to do manually. This is where the <strong>BI (Business Intelligence) Developer</strong> takes over. They build automated dashboards that live on a 24/7 secure server.</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="dataflow.png" alt="Data flow overview diagram" width="90%">
+<p style="text-align: center; font-size: 0.95em;">
+Fig. A - Data flow overview. Source: <a href="https://youtu.be/J2rQTJby8XM" target="_blank" rel="noopener noreferrer"> Data with Baraa </a>.
+</p>
+</div>
+<p>While analysts look at the past and present, <strong>Data Scientists</strong> and <strong>ML (Machine Learning) Engineers</strong> look forward.</p>
+<ul>
+<li><strong>Predictive Modeling</strong>: Data Scientists experiment with the data to build models that answer questions like “What will happen?”—such as predicting which customers might leave (churn).</li>
+<li><strong>Productionalizing AI</strong>: The ML Engineer then builds the infrastructure to deploy these models into live applications, ensuring the predictions work at scale, every day.</li>
+</ul>
+</section>
+<section id="data-architect" class="level2">
+<h2 class="anchored" data-anchor-id="data-architect">4. Data Architect</h2>
+<p>A Data Architect is a senior data professional responsible for designing, structuring, and managing an organization’s data ecosystem so that data is reliable, scalable, secure, and easy to use for analytics and applications.</p>
+<section id="what-a-data-architect-does" class="level4">
+<h4 class="anchored" data-anchor-id="what-a-data-architect-does">What a Data Architect does</h4>
+<ul>
+<li><p>Designs data models (conceptual, logical, physical)</p></li>
+<li><p>Defines data architecture for databases, data warehouses, data lakes, and lakehouses</p></li>
+<li><p>Chooses appropriate data technologies (SQL/NoSQL databases, cloud data services)</p></li>
+<li><p>Sets data standards, policies, and governance rules</p></li>
+<li><p>Ensures data governance</p></li>
+<li><p>Works closely with data engineers, analysts, data scientists, and business teams</p></li>
+<li><p>Plans how data flows from source systems → storage → analytics</p></li>
+</ul>
+<p>Without a data warehouse, processes are manual, error-prone, slow, and inconsistent. With a data warehouse, ETL automates the flow to a single source of truth, making it faster, scalable, and capable of maintaining historical data.</p>
+</section>
+<section id="data-modeling" class="level4">
+<h4 class="anchored" data-anchor-id="data-modeling">Data Modeling</h4>
+<p>The data architect creates the blueprints for scalable data systems, including data modeling to ensure structure, efficiency, and alignment with business needs. If the data warehouse is a library, Data Modeling is the sophisticated system used to categorize every book, shelf, and aisle to ensure a reader can find exactly what they need in seconds. It is the process of defining how data is connected and structured to reflect the reality of the business. Data modeling occurs at three distinct levels of abstraction, moving from high-level ideas to technical reality:</p>
+<p><strong>Conceptual Level</strong>: This focuses on identifying the main “entities” or big ideas, such as “Customers,” “Orders,” or “Products”.</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="conceptual2.drawio.png" alt="" width="50%">
+<p style="text-align: center;">
+Fig. B - Conceptual Level i.e.&nbsp;Big picture view
+</p>
+</div>
+<p><strong>Logical Level</strong>: This defines the “attributes” for each entity—for example, a “Customer” entity now includes a name, email, and address. In the context of the Gold Layer (the business-ready data), the focus is primarily on this logical design.</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="logical1.drawio.png" alt="" width="50%">
+<p style="text-align: center;">
+Fig. C - Logical Level i.e.&nbsp;Blueprint
+</p>
+</div>
+<p><strong>Physical Level</strong>: This is the technical implementation, where the design is translated into actual database tables, data types, and storage requirements.</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="Physical.drawio.png" alt="" width="50%">
+<p style="text-align: center;">
+Fig. D - Physical Level i.e.&nbsp;Implementation
+</p>
+</div>
+<p>At the heart of a data model there are two types of tables that serve very different purposes:</p>
+<p><strong>Fact Tables (measures)</strong>: These act as the “heart” of the model. They store numeric “events” or measurements, such as a sale amount, a quantity of items sold, or a temperature reading. A fact table consists of foreign keys referencing dimension tables and numeric measures, with optional degenerate dimensions. Degenerate dimensions means identifiers with no separate dimension table i.e.&nbsp;order_id, invoice_number, transaction_id etc.</p>
+<p><strong>Dimension Tables (attributes)</strong>: These provide the “context” for the facts. They contain descriptive information—the “who, what, where, and when.” For example, if a Fact Table shows a sale of $50, the Dimension Table tells you it was bought by “John Doe” at “Store #4” on “Tuesday”.</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="fact_dim_table.png" alt="Fact and Dimension Tables" width="90%">
+<p style="text-align: center; font-size: 0.95em;">
+Fig. E - Fact and Dimension Tables. Source: <a href="https://www.databricks.com/glossary/star-schema" target="_blank" rel="noopener noreferrer"> Databricks.com </a>.
+</p>
+</div>
+<p>A fact table sits at the center and connects to all dimensions. Without dimension keys, the fact table would have no context. Hence, to relate different dimension tables to a fact table, the fact table must store the keys of those dimension tables.</p>
+<p>The way these fact and dimension tables are linked together is called a Schema. Architects generally choose between two primary styles:</p>
+<p><strong>The Star Schema</strong>: This is the simplest and most common design. It features a central Fact Table surrounded by Dimension Tables, resembling a star. Its simplicity makes it incredibly fast for analysts to query.</p>
+<p><strong>The Snowflake Schema</strong>: This is a more complex version where dimensions are “normalized”—meaning they are broken down into sub-dimensions (like “City” branching off of “Store”). While more efficient for storage, it is more complex to navigate than the star schema.</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="Schema.jpg" alt="" width="90%">
+<p style="text-align: center;">
+Fig. F - Schema Design
+</p>
+</div>
+</section>
+<section id="bonus-tips" class="level4">
+<h4 class="anchored" data-anchor-id="bonus-tips">Bonus Tips:</h4>
+<p>when you are looking to any datasets in any projects, See the data always divided between Dimensions and Measures. Doing this will help you understand the data better and generate endless amounts of insights more effectively</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="tips.png" alt=" Dimensions and Measures" width="65%">
+<p style="text-align: center; font-size: 0.95em;">
+Fig. G - Dimensions and Measures. Source: <a href="https://youtu.be/J2rQTJby8XM" target="_blank" rel="noopener noreferrer"> Data with Baraa </a>.
+</p>
+</div>
+<ul>
+<li><p>Dimensions are descriptive attributes. They are non-aggregatable, meaning you cannot mathematically aggregate them together to get a meaningful insight (e.g., you wouldn’t add two birth dates(i.e.&nbsp;2001/04/19 and 2001/04/20) together). Dimensions are the qualitative attributes used for grouping and segmenting data. They act as the “labels” that provide context to your numbers. Examples: Categories, names, dates, and geographic locations.</p></li>
+<li><p>Measures are the quantitative, aggregatable numerics that represent the actual values you want to analyze. These values are designed to be summed, averaged, or counted. Examples: Sales figures, profit totals, or the quantity of items sold.</p></li>
+</ul>
+<p>When a data analyst creates a report, they use these two types of data in tandem:</p>
+<p>“Show me the Sales (Measure) broken down by Category (Dimension).”</p>
+<p>Without dimensions, a measure is just a number without context; without measures, a dimension is just a list without value.</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="tips3.jpeg" alt="Algorithm to find out the dimensions and measures" width="65%">
+<p style="text-align: center; font-size: 0.95em;">
+Fig. H - Algorithm to find out the dimensions and measures. Source: <a href="https://youtu.be/J2rQTJby8XM" target="_blank" rel="noopener noreferrer"> Data with Baraa </a>.
+</p>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="tips2.png" alt=" Dimensions and Measures Example" width="65%">
+<p style="text-align: center; font-size: 0.95em;">
+Fig. I - Dimensions and Measures Example. Source: <a href="https://youtu.be/J2rQTJby8XM" target="_blank" rel="noopener noreferrer"> Data with Baraa </a>.
+</p>
+</div>
+</section>
+<section id="data-architectures" class="level4">
+<h4 class="anchored" data-anchor-id="data-architectures">Data Architectures:</h4>
+<p>Architects choose from several foundational structures depending on the type of data and the business goals.</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<img src="dataarchs.drawio.png" alt="" width="70%">
+<p style="text-align: center;">
+Fig. J - Data Architectures
+</p>
+</div>
+<ul>
+<li><p>Data warehouse: A data warehouse is a data management system that stores current and historical data from multiple sources in a business-friendly manner for easier insights and reporting. Data warehouses are typically used for business intelligence (BI), analytics, reporting, data applications, preparing data for machine learning (ML) and data analysis.<a href="#references">3</a></p></li>
+<li><p>Data Lake: A Data Lake is a centralized large-scale storage system that holds raw data in all formats (structured, semi-structured, unstructured). It is used for Machine learning, Big data analytics and Log, IoT, image, and video storage. For eg : AWS S3, Google Cloud Storage, Azure Blob Storage, Hadoop HDFS.</p></li>
+<li><p>Data Lakehouse: A Data Lakehouse combines the flexibility of a Data Lake with the performance and reliability of a Data Warehouse. For eg : Databricks + Delta Lake, Apache Iceberg, Apache Hudi.</p></li>
+<li><p>Data Mesh: Data Mesh is not a storage technology, but an organizational and architectural approach to managing data at scale. It is a decentralized approach to data management where data is owned and governed by its users, rather than by a central data team. For eg : Finance team owns finance data, HR team owns HR data, Marketing team owns marketing data</p></li>
+</ul>
+</section>
+<section id="data-warehouse-design-approaches" class="level4">
+<h4 class="anchored" data-anchor-id="data-warehouse-design-approaches">Data Warehouse Design Approaches:</h4>
+<p>The architect must decide how data flows through the system. Several famous methodologies exist, each with a different philosophy on speed and structure:</p>
+<ol type="1">
+<li><p>Inmon’s Method: A top-down approach where data moves from a staging area to a centralized enterprise warehouse, and finally into smaller “data marts(a smaller, focused version of a data warehouse)” for specific departments.</p></li>
+<li><p>Kimball’s Approach: A faster, bottom-up method that focuses on getting data directly into “marts” for immediate use.</p></li>
+<li><p>Data Vault/Hybrid Approach: Combine the agility of Kimball with Inmon’s structure. Data Vault modeling separates raw, business, and presentation layers to preserve auditability and support frequent schema changes without major redesign.</p></li>
+<li><p>Medallion Architecture: Organizes data into three logical layers: Bronze (raw ingestion), Silver (cleaned and filtered), and Gold (business-ready and optimized).</p></li>
+</ol>
+</section>
+</section>
+<section id="data-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="data-engineering">5. Data Engineering</h2>
+<p>In the grand architecture of a data-driven organization, the Data Engineer operates in the “engine room,” ensuring the fuel of information flows smoothly and reliably. Their primary mission is to build and maintain the invisible infrastructure that supports every insight and prediction. The role of data engineers is to build pipelines for ETL (Extract, Transform, Load) processes, handling massive data volumes and automating everything to operate without manual intervention. The process varies by layer and is not always a full ETL sequence. For example, in a Data Lake, the process is often just Extract and Load (EL), with transformation happening later.</p>
+<ul>
+<li><p>Extract: The engineer builds connectors to diverse sources, including databases, static files, real-time streams like Kafka, or external APIs.</p></li>
+<li><p>Transform: The raw data is refined by fixing data types, removing duplicates, and applying complex business logic through joins and aggregations.</p></li>
+<li><p>Load: Finally, the polished data is delivered into target systems, making it ready for use.</p></li>
+</ul>
+</section>
+<section id="data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis">6. Data Analysis</h2>
+<p>Data Analysis is the systematic process of collecting, cleaning, transforming and interpreting data to discover useful information, identify patterns and support decision-making.</p>
+<p>Data Analysis Process:</p>
+<ol type="1">
+<li><p>Define Objectives: Establishes the analytical scope and success criteria. Converts business questions into testable hypotheses and measurable metrics, determining what insights must be generated and what decisions the analysis will inform.</p></li>
+<li><p>Data Collection: Aggregates raw data from relevant sources such as databases, APIs, or logs. Ensures the dataset is comprehensive, accurate, and structured appropriately for subsequent processing and analysis.</p></li>
+<li><p>Data Cleaning &amp; Preprocessing: Identifies and corrects errors, missing values, and outliers. Transforms and encodes data into a consistent format, creating a reliable dataset suitable for statistical methods and machine learning algorithms.</p></li>
+<li><p>Exploratory Data Analysis (EDA): Examines data through summary statistics and visualizations to uncover patterns, correlations, and anomalies. Informs hypothesis refinement and guides selection of appropriate analytical techniques.</p></li>
+<li><p>Statistical Analysis: Applies statistical tests, models, or algorithms to validate hypotheses, quantify relationships, and generate predictions. Transforms observations into evidence-based conclusions that address the original objectives.</p></li>
+<li><p>Visualization &amp; Communication: Translates analytical results into clear visual and narrative formats. Presents findings to stakeholders in an accessible manner, enabling data-driven decisions and strategic actions.</p></li>
+</ol>
+<p>Iterative Nature: The process is cyclical; insights from later stages often require revisiting earlier steps to refine questions, collect additional data, or improve data quality.</p>
+<section id="types" class="level4">
+<h4 class="anchored" data-anchor-id="types">Types:</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 28%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Focus</th>
+<th>Question</th>
+<th>Tools Used</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Descriptive</td>
+<td>Past/Current</td>
+<td>What happened?</td>
+<td>Excel, SQL, BI dashboards</td>
+</tr>
+<tr class="even">
+<td>Diagnostic</td>
+<td>Causes</td>
+<td>Why did it happen?</td>
+<td>Drill-down, correlation analysis</td>
+</tr>
+<tr class="odd">
+<td>Predictive</td>
+<td>Future</td>
+<td>What will happen?</td>
+<td>Regression, ML models, forecasting</td>
+</tr>
+<tr class="even">
+<td>Prescriptive</td>
+<td>Action</td>
+<td>What should we do?</td>
+<td>Optimization, simulation, decision trees</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="data-science" class="level2">
+<h2 class="anchored" data-anchor-id="data-science">7. Data Science</h2>
+<p>While analysts look to the past to understand “What happened?”, the data scientist assists in answering the vital business question: “What will happen?”. This phase of the data journey transforms information into a predictive engine, allowing a company to anticipate challenges before they arise. The workflow of a data scientist is a rigorous process of refining information through several critical stages:</p>
+<ul>
+<li><p><strong>Data Collection &amp; Preprocessing</strong>: Data scientists gather massive datasets from diverse sources. They perform “data surgery”-merging complex tables, handling missing (null) values, and ensuring every piece of data is in the correct format.</p></li>
+<li><p><strong>Exploratory Data Analysis (EDA)</strong>: Before building a model, they conduct EDA to uncover hidden patterns. This involves using visualizations to understand data distributions, identifying customer clusters, and finding correlations between variables.</p></li>
+<li><p><strong>Feature Engineering</strong>: This is where domain expertise meets data. Scientists create new data points (columns) to give models more context, such as converting a simple “Sign-up Date” into “Days Since Sign-up” to better measure loyalty.</p></li>
+</ul>
+<p>To create a prediction, such as the probability that a specific customer will leave (churn), a structured mathematical approach is used:</p>
+<ul>
+<li><p><strong>Splitting Data</strong>: The dataset is divided into a Training Set (to teach the model) and a Test Set (to verify its accuracy).</p></li>
+<li><p><strong>Algorithm Selection</strong>: Choosing the right mathematical steps to learn patterns from the data.</p></li>
+<li><p><strong>Training</strong>: The model is trained to minimize errors, refining its logic until its predictions match reality as closely as possible.</p></li>
+<li><p><strong>Prediction</strong>: The final model generates actionable scores, such as a “Churn Probability Score” for every client.</p></li>
+</ul>
+</section>
+<section id="machine-learning-engineer" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning-engineer">8. Machine Learning Engineer</h2>
+<section id="what-they-do" class="level4">
+<h4 class="anchored" data-anchor-id="what-they-do">What they do?</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data Scientists</th>
+<th>ML Engineers</th>
+<th>AI Engineers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Insights</td>
+<td>Building Production-Ready ML Systems</td>
+<td>LLMs, Agents</td>
+</tr>
+<tr class="even">
+<td>Experiments, ML modeling</td>
+<td>Engineered ML Systems</td>
+<td>Integrating MCP(Model Context Protocol)</td>
+</tr>
+<tr class="odd">
+<td>Business thinking</td>
+<td>Pipelines, MLOps</td>
+<td>Building AI Features into products, Doing Retrieval Augmented Generation(RAG)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-they-need" class="level4">
+<h4 class="anchored" data-anchor-id="what-they-need">What they need?</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data Scientists</th>
+<th>ML Engineers</th>
+<th>AI Engineers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SQL/Python, dashboards(Tableau, PowerBI), Analysis</td>
+<td>Build and Deploy Models</td>
+<td>LLMs, Agents, Vector DBs, Langchain, FastAPI, MCP</td>
+</tr>
+<tr class="even">
+<td>A/B test, Feature work</td>
+<td>Pipelines, MLflow, monitoring, model optimization</td>
+<td>prompting+evaluation</td>
+</tr>
+<tr class="odd">
+<td>Classic ML(some teams)</td>
+<td>Docker, Cloud, CI/CD, API(FastAPI)</td>
+<td>Fine Tuning/RAG/orchestration</td>
+</tr>
+<tr class="even">
+<td>Heavy Business Communication</td>
+<td>Strong Coding Expectation</td>
+<td>Shipping AI Features fast + product thinking</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://www.databricks.com/discover/data-governance">Data Governance|Databricks</a></li>
+<li><a href="https://thinamxx.github.io/blog/posts/DataEng/DataEngineering.html#batch-processing-versus-stream-processing">Thinam Tamang blog|Data Engineering Fundamentals</a></li>
+<li><a href="https://www.databricks.com/discover/data-warehouse">Data Warehouse|Databricks</a></li>
+<li><a href="https://www.youtube.com/@DataWithBaraa">Data with Bara Youtube Channel</a></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<div id="chatbot-widget" data-chat-endpoint="">
+    <div id="chatbot-tooltip">Hi, Chatbot here!</div>
+
+    <div id="chatbot-window" class="hidden">
+        <div id="chatbot-header">
+            <div class="chatbot-title">
+                <div class="chatbot-avatar">M</div>
+                <span>Manik's AI Assistant</span>
+            </div>
+            <button id="chatbot-close" type="button">×</button>
+        </div>
+
+        <div id="chatbot-messages"></div>
+
+        <div id="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Ask me anything...">
+            <button id="chatbot-send" type="button">→</button>
+        </div>
+    </div>
+
+    <div id="chatbot-button"></div>
+</div>
+
+<link rel="stylesheet" href="../../chat.css">
+<script src="../../chat.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
