@@ -1,0 +1,12 @@
+---
+title: "Welcome To My Blog"
+author: "Manik Syangtan"
+date: "2026-01-07"
+categories: [Welcome]
+---
+
+Welcome to my blog 👋
+
+I’m excited to begin sharing my journey in Data, Artificial Intelligence, and Machine Learning. 
+This space will document what I’m learning, building, and exploring as I grow professionally in the tech field.
+

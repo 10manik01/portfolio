@@ -1,0 +1,161 @@
+<script>
+  (function () {
+    const portfolioThemeKey = "theme-preference";
+    const quartoThemeKey = "quarto-color-scheme";
+
+    function isTheme(value) {
+      return value === "light" || value === "dark";
+    }
+
+    function fromQuartoTheme(value) {
+      if (value === "alternate") return "dark";
+      if (value === "default") return "light";
+      return null;
+    }
+
+    function toQuartoTheme(value) {
+      return value === "dark" ? "alternate" : "default";
+    }
+
+    function readTheme() {
+      const portfolioTheme = window.localStorage.getItem(portfolioThemeKey);
+      if (isTheme(portfolioTheme)) return portfolioTheme;
+
+      return fromQuartoTheme(window.localStorage.getItem(quartoThemeKey));
+    }
+
+    function writeTheme(theme) {
+      if (!isTheme(theme)) return;
+
+      window.localStorage.setItem(portfolioThemeKey, theme);
+      window.localStorage.setItem(quartoThemeKey, toQuartoTheme(theme));
+    }
+
+    function currentTheme() {
+      return document.body.classList.contains("quarto-dark") ? "dark" : "light";
+    }
+
+    function normalizePathname(pathname) {
+      if (!pathname) return "/";
+      return pathname.replace(/\/index\.html$/, "/");
+    }
+
+    function normalizeUrl(url) {
+      const nextUrl = new URL(url, window.location.href);
+      nextUrl.pathname = normalizePathname(nextUrl.pathname);
+      return nextUrl;
+    }
+
+    function portfolioHomePath() {
+      const currentUrl = normalizeUrl(window.location.href);
+      const blogSegment = "/blog/";
+      const blogIndex = currentUrl.pathname.indexOf(blogSegment);
+
+      if (blogIndex === -1) {
+        return null;
+      }
+
+      return `${currentUrl.pathname.slice(0, blogIndex + 1)}#home`;
+    }
+
+    function syncPortfolioHomeButton() {
+      const homeLink = document.querySelector('#quarto-header .nav-link[href$="#home"]');
+      const targetPath = portfolioHomePath();
+
+      if (!homeLink || !targetPath) return;
+
+      homeLink.href = targetPath;
+    }
+
+    function syncHomeLinkBehavior() {
+      const brandLink = document.querySelector("#quarto-header .navbar-brand");
+      if (!brandLink) return;
+
+      const currentUrl = normalizeUrl(window.location.href);
+      const targetUrl = normalizeUrl(brandLink.href);
+
+      brandLink.href = `${targetUrl.pathname}${targetUrl.search}${targetUrl.hash}`;
+      brandLink.onclick = function (event) {
+        const normalizedCurrent = normalizeUrl(window.location.href);
+        const normalizedTarget = normalizeUrl(brandLink.href);
+
+        if (
+          normalizedCurrent.origin === normalizedTarget.origin &&
+          normalizedCurrent.pathname === normalizedTarget.pathname &&
+          normalizedCurrent.search === normalizedTarget.search &&
+          normalizedCurrent.hash === normalizedTarget.hash
+        ) {
+          event.preventDefault();
+        }
+      };
+
+      if (
+        currentUrl.pathname !== window.location.pathname &&
+        normalizePathname(window.location.pathname) === currentUrl.pathname
+      ) {
+        window.history.replaceState(
+          window.history.state,
+          "",
+          `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`,
+        );
+      }
+    }
+
+    function wrapQuartoToggle() {
+      if (
+        typeof window.quartoToggleColorScheme !== "function" ||
+        window.__themeSyncWrapped
+      ) {
+        return;
+      }
+
+      const originalToggle = window.quartoToggleColorScheme;
+
+      window.quartoToggleColorScheme = function () {
+        originalToggle();
+        writeTheme(currentTheme());
+      };
+
+      window.__themeSyncWrapped = true;
+    }
+
+    function applyTheme(theme) {
+      if (!isTheme(theme) || typeof window.quartoToggleColorScheme !== "function") {
+        return;
+      }
+
+      writeTheme(theme);
+
+      if (theme !== currentTheme()) {
+        window.quartoToggleColorScheme();
+      }
+    }
+
+    const initialTheme = readTheme();
+    if (initialTheme) {
+      writeTheme(initialTheme);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      wrapQuartoToggle();
+      syncPortfolioHomeButton();
+      syncHomeLinkBehavior();
+
+      const theme = readTheme();
+      if (theme) {
+        applyTheme(theme);
+      } else {
+        writeTheme(currentTheme());
+      }
+    });
+
+    window.addEventListener("storage", function (event) {
+      if (event.key !== portfolioThemeKey && event.key !== quartoThemeKey) {
+        return;
+      }
+
+      wrapQuartoToggle();
+      applyTheme(readTheme());
+    });
+  })();
+</script>

@@ -1,0 +1,98 @@
+:root {
+  --portfolio-grid-light-bg: #ffffff;
+  --portfolio-grid-light-minor: rgba(239, 68, 68, 0.04);
+  --portfolio-grid-light-major: rgba(239, 68, 68, 0.08);
+  --portfolio-grid-dark-bg: #070b16;
+  --portfolio-grid-dark-minor: rgba(248, 113, 113, 0.06);
+  --portfolio-grid-dark-major: rgba(248, 113, 113, 0.12);
+}
+
+body.quarto-light,
+body.quarto-dark {
+  background-position: -1px -1px;
+  background-size: 160px 160px, 160px 160px, 32px 32px, 32px 32px;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+body.quarto-light {
+  background-color: var(--portfolio-grid-light-bg);
+  background-image:
+    linear-gradient(to right, var(--portfolio-grid-light-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--portfolio-grid-light-major) 1px, transparent 1px),
+    linear-gradient(to right, var(--portfolio-grid-light-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--portfolio-grid-light-minor) 1px, transparent 1px);
+}
+
+body.quarto-dark {
+  background-color: var(--portfolio-grid-dark-bg);
+  background-image:
+    linear-gradient(to right, var(--portfolio-grid-dark-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--portfolio-grid-dark-major) 1px, transparent 1px),
+    linear-gradient(to right, var(--portfolio-grid-dark-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--portfolio-grid-dark-minor) 1px, transparent 1px);
+}
+
+#quarto-header .navbar .nav-link[href$="#home"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  margin-right: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05)),
+    rgba(10, 15, 26, 0.38);
+  backdrop-filter: blur(14px);
+  color: #ffffff;
+  box-shadow: 0 16px 30px -22px rgba(15, 23, 42, 0.85);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#quarto-header .navbar .nav-link[href$="#home"] .menu-text {
+  display: none;
+}
+
+#quarto-header .navbar .nav-link[href$="#home"] .bi {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+#quarto-header .navbar .nav-link[href$="#home"]:hover,
+#quarto-header .navbar .nav-link[href$="#home"]:focus {
+  color: #ffffff;
+  transform: translateY(-1px);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.08)),
+    rgba(10, 15, 26, 0.5);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 20px 36px -22px rgba(15, 23, 42, 0.92);
+}
+
+#quarto-header .navbar .nav-link[href$="#home"]:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.24);
+  outline-offset: 2px;
+}
+
+div.quarto-listing-container-default div.quarto-post {
+  position: relative;
+  border-bottom-color: transparent;
+}
+
+div.quarto-listing-container-default div.quarto-post:not(:last-child) {
+  border-bottom-color: rgba(239, 68, 68, 0.24);
+}
+
+div.quarto-listing-container-default div.quarto-post:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(239, 68, 68, 0.4) 12%, rgba(239, 68, 68, 1) 50%, rgba(239, 68, 68, 0.4) 88%, transparent 100%);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.24);
+  pointer-events: none;
+}

@@ -1,0 +1,28 @@
+project:
+  type: website
+  resources:
+    - CNAME
+    - favicon.ico
+  
+website:
+  title: "Manik Syangtan | Elex, Comm and Info Engineer"
+  favicon: fav.ico
+  navbar:
+    left:
+      - icon: house-door-fill
+        href: /portfolio/#home
+    right:
+      - icon: github
+        href: https://github.com/10manik01
+format:
+  html:
+    theme:
+      light: yeti
+      dark: cyborg
+    css: styles.css
+    include-in-header: theme-sync.html
+    include-after-body: chat-widget.html
+
+
+
+
