@@ -10,7 +10,7 @@ website:
   navbar:
     left:
       - icon: house-door-fill
-        href: /portfolio/#home
+        href: /#home
     right:
       - icon: github
         href: https://github.com/10manik01
@@ -22,7 +22,6 @@ format:
     css: styles.css
     include-in-header: theme-sync.html
     include-after-body: chat-widget.html
-
 
 
 

@@ -5,7 +5,17 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const rootDir = dirname(fileURLToPath(import.meta.url));
-const siteBase = '/portfolio/';
+function normalizeBase(base?: string) {
+  const trimmed = base?.trim();
+
+  if (!trimmed || trimmed === '/') {
+    return '/';
+  }
+
+  return `/${trimmed.replace(/^\/+|\/+$/g, '')}/`;
+}
+
+const siteBase = normalizeBase(process.env.SITE_BASE);
 const generatedBlogDir = resolve(rootDir, 'public', 'blog');
 const generatedBlogIndex = resolve(generatedBlogDir, 'index.html');
 
