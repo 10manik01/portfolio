@@ -9,7 +9,7 @@ const profileImage = import.meta.env.BASE_URL + 'images/fw.png';
 const sectionLinks = [
   { href: 'home', label: 'Home' },
   { href: 'about', label: 'About' },
-  { href: 'experience', label: 'Experience' },
+  // { href: 'experience', label: 'Experience' },
   { href: 'projects', label: 'Projects' },
   { href: 'education', label: 'Education' },
   { href: 'tech', label: 'Tech Stack' },
