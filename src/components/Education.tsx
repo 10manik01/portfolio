@@ -1,6 +1,5 @@
-
 import { motion } from 'framer-motion';
-import { GraduationCap, BookOpen, School, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 export function Education() {
   const education = [
@@ -9,99 +8,85 @@ export function Education() {
       school: "Sagarmatha Engineering College",
       link: "https://sagarmatha.edu.np/",
       period: "2021 - 2025",
-      details: "In-depth study of signal processing, embedded systems, and AI/ML. Developing a strong foundation in telecommunications and data engineering.",
-      icon: GraduationCap
+      details: "In-depth study of signal processing, embedded systems, and AI/ML. Building a strong foundation in telecommunications and data engineering."
     },
     {
       degree: "High School (+2 Science)",
       school: "Hetauda School of Management and Social Sciences",
       link: "https://hsm.edu.np/",
       period: "2018 - 2020",
-      details: "Located in Hetauda, Nepal. Focused on advanced sciences and mathematics.",
-      icon: BookOpen
+      details: "Located in Hetauda, Nepal. Focused on advanced sciences and mathematics."
     },
     {
       degree: "Secondary School (SEE)",
       school: "Shree Bhrikutee Secondary School",
-      link: "https://www.google.com/maps/place/Shree+Bhrikuti+Secondary+School/@27.3855041,84.9876692,17z/data=!3m1!4b1!4m6!3m5!1s0x39eb4b3be1976d9f:0xc6bd4a2ef47ec0dd!8m2!3d27.3855041!4d84.9876692!16s%2Fg%2F11rsb3b_76?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
-      period: "2017 passout",
-      details: "School located at Kalopani, Hetauda, Nepal.",
-      icon: School
+      period: "2017",
+      details: "School located at Kalopani, Hetauda, Nepal."
     }
   ];
 
   return (
-    <section id="education" className="relative py-16 md:py-24 bg-white overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 md:px-6">
-
-        {/* Header Section - Kept exactly as requested */}
+    <section id="education" className="py-16 sm:py-24 px-5 sm:px-8 md:px-16 lg:px-24 divider-top-red">
+      <div className="max-w-2xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16 relative z-10"
+          className="mb-12 sm:mb-16"
         >
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-500 mb-6 tracking-tight">
+          <span className="inline-flex items-center rounded-lg bg-green-100 px-3 py-1.5 text-green-600 font-bold tracking-widest text-[12px] uppercase mb-6">
             EDUCATION
+          </span>
+          <h2 className="text-[1.9rem] sm:text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-tight">
+            Academic Background
           </h2>
-          <p className="text-gray-400 tracking-[0.15em] text-base md:text-xl mt-4 max-w-2xl mx-auto">
-            Academic background and lifelong learning journey
-          </p>
         </motion.div>
 
-        {/* Single Timeline Entity */}
-        <div className="relative">
-          {/* Vertical Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-yellow-400/50 via-gray-200 to-transparent md:-translate-x-1/2" />
+        <div className="relative space-y-6 sm:space-y-8 md:space-y-16">
+          <div className="absolute left-[7px] top-5 bottom-5 w-[1px] bg-border/50" />
 
-          <div className="space-y-12">
-            {education.map((item, index) => (
-              <motion.div
-                key={item.degree}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={`relative flex flex-col md:flex-row items-start md:items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                  }`}
-              >
-                {/* Timeline Dot/Icon */}
-                <div className="absolute left-4 md:left-1/2 w-10 h-10 -translate-x-1/2 flex items-center justify-center rounded-full bg-white border-2 border-yellow-500 z-10 shadow-sm">
-                  <item.icon className="w-5 h-5 text-yellow-600" />
-                </div>
+          {education.map((item, index) => (
+            <motion.div
+              key={item.degree}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="group relative rounded-[26px] bg-card/55 px-5 py-5 pl-10 shadow-[0_20px_45px_-35px_rgba(15,23,42,0.55)] sm:rounded-none sm:bg-transparent sm:px-0 sm:py-0 sm:pl-10 sm:shadow-none"
+            >
+              <div className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-[3px] border-card bg-muted group-hover:bg-blue-500 group-hover:scale-125 transition-all duration-300 ring-1 ring-border z-10" />
 
-                {/* Content Card */}
-                <div className={`w-full md:w-[45%] pl-12 md:pl-0 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:pl-12'
-                  }`}>
-                  <div className="p-6 bg-gray-50/50 border border-gray-100 rounded-3xl hover:shadow-md transition-shadow duration-300">
-                    <span className="inline-block px-3 py-1 rounded-full bg-yellow-50 text-yellow-700 text-xs font-bold mb-3">
-                      {item.period}
-                    </span>
+              <div className="mb-3 sm:mb-2 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                <h3 className="text-lg font-bold text-foreground leading-snug group-hover:text-blue-600 transition-colors duration-300">
+                  {item.degree}
+                </h3>
+                <span className="text-xs font-bold text-muted font-mono shrink-0">
+                  {item.period}
+                </span>
+              </div>
 
-                    <h3 className="text-xl font-bold tracking-[0.15em] text-gray-900 leading-tight mb-2">
-                      {item.degree}
-                    </h3>
+              {item.link ? (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[color:var(--muted-foreground)] hover:!text-blue-600 text-[13px] font-bold tracking-wider uppercase mb-4 transition-colors duration-300"
+                >
+                  {item.school}
+                  <ExternalLink size={14} strokeWidth={2} />
+                </a>
+              ) : (
+                <p className="inline-flex items-center gap-1.5 text-[color:var(--muted-foreground)] text-[13px] font-bold tracking-wider uppercase mb-4">
+                  {item.school}
+                </p>
+              )}
 
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-1 text-blue-600 hover:text-blue-500 font-medium text-sm mb-3 transition-colors break-words ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                        }`}
-                    >
-                      {item.school}
-                      <ExternalLink size={12} className="flex-shrink-0" />
-                    </a>
-
-                    <p className="text-gray-600 tracking-[0.15em] text-sm leading-relaxed">
-                      {item.details}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              <p className="max-w-lg text-[14px] sm:text-[15px] font-light text-muted leading-relaxed">
+                {item.details}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
