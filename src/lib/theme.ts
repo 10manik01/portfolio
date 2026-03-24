@@ -12,6 +12,32 @@ let activeTheme: ThemeMode = 'light';
 let hasInitializedTheme = false;
 let hasAttachedStorageListener = false;
 
+function safeLocalStorageGet(key: string): string | null {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeLocalStorageSet(key: string, value: string) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+    // Ignore storage write failures in restricted browser contexts.
+  }
+}
+
+function prefersDarkMode() {
+  try {
+    return typeof window.matchMedia === 'function'
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+      : false;
+  } catch {
+    return false;
+  }
+}
+
 function isThemeMode(value: string | null): value is ThemeMode {
   return value === 'light' || value === 'dark';
 }
@@ -29,22 +55,20 @@ function themeToQuartoValue(theme: ThemeMode): 'default' | 'alternate' {
 export function getPreferredTheme(): ThemeMode {
   if (typeof window === 'undefined') return 'light';
 
-  const portfolioTheme = window.localStorage.getItem(PORTFOLIO_THEME_STORAGE_KEY);
+  const portfolioTheme = safeLocalStorageGet(PORTFOLIO_THEME_STORAGE_KEY);
   if (isThemeMode(portfolioTheme)) return portfolioTheme;
 
-  const quartoTheme = quartoValueToTheme(
-    window.localStorage.getItem(QUARTO_THEME_STORAGE_KEY),
-  );
+  const quartoTheme = quartoValueToTheme(safeLocalStorageGet(QUARTO_THEME_STORAGE_KEY));
   if (quartoTheme) return quartoTheme;
 
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return prefersDarkMode() ? 'dark' : 'light';
 }
 
 export function persistTheme(theme: ThemeMode) {
   if (typeof window === 'undefined') return;
 
-  window.localStorage.setItem(PORTFOLIO_THEME_STORAGE_KEY, theme);
-  window.localStorage.setItem(QUARTO_THEME_STORAGE_KEY, themeToQuartoValue(theme));
+  safeLocalStorageSet(PORTFOLIO_THEME_STORAGE_KEY, theme);
+  safeLocalStorageSet(QUARTO_THEME_STORAGE_KEY, themeToQuartoValue(theme));
 }
 
 export function applyThemeToDocument(theme: ThemeMode) {
@@ -97,13 +121,17 @@ function handleStorage(event: StorageEvent) {
   syncThemeFromStorage();
 }
 
-function ensureThemeInitialized() {
+function initializeThemeState() {
   if (typeof window === 'undefined') return;
 
   if (!hasInitializedTheme) {
     activeTheme = getPreferredTheme();
     hasInitializedTheme = true;
   }
+}
+
+function attachStorageListener() {
+  if (typeof window === 'undefined') return;
 
   if (!hasAttachedStorageListener) {
     window.addEventListener('storage', handleStorage);
@@ -114,14 +142,15 @@ function ensureThemeInitialized() {
 function getThemeSnapshot(): ThemeMode {
   if (typeof window === 'undefined') return 'light';
 
-  ensureThemeInitialized();
+  initializeThemeState();
   return activeTheme;
 }
 
 export function initializeTheme(): ThemeMode {
   if (typeof window === 'undefined') return 'light';
 
-  ensureThemeInitialized();
+  initializeThemeState();
+  attachStorageListener();
   applyThemeToDocument(activeTheme);
   persistTheme(activeTheme);
   return activeTheme;
@@ -130,7 +159,8 @@ export function initializeTheme(): ThemeMode {
 export function setTheme(theme: ThemeMode) {
   if (typeof window === 'undefined') return;
 
-  ensureThemeInitialized();
+  initializeThemeState();
+  attachStorageListener();
 
   if (theme === activeTheme) {
     applyThemeToDocument(theme);
@@ -146,7 +176,8 @@ export function toggleTheme() {
 }
 
 function subscribeToTheme(listener: () => void) {
-  ensureThemeInitialized();
+  initializeThemeState();
+  attachStorageListener();
   themeListeners.add(listener);
 
   return () => {

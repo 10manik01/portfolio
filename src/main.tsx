@@ -3,6 +3,12 @@ import App from "./App.tsx";
 import "./index.css";
 import { initializeTheme } from "./lib/theme";
 
-initializeTheme();
+try {
+  initializeTheme();
+} catch (error) {
+  console.error("Theme initialization failed", error);
+}
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  <App />,
+);
