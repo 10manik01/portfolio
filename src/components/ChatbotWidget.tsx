@@ -49,7 +49,7 @@ export function ChatbotWidget() {
     const endpoint = getChatEndpoint();
 
     if (!endpoint) {
-      appendMessage('The chatbot backend is not connected yet.', 'bot');
+      appendMessage('Server error. Please try again later.', 'bot');
       return;
     }
 

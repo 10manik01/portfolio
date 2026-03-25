@@ -40,7 +40,7 @@ async function sendMessage() {
     const endpoint = getChatEndpoint();
 
     if (!endpoint) {
-        addMessage("The chatbot backend is not connected yet.", "bot");
+        addMessage("Server error. Please try again later.", "bot");
         return;
     }
 
